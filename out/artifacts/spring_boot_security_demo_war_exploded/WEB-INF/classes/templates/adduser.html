@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Добавление пользователя</title>
+</head>
+<body>
+<h2>Добавить нового пользователя</h2>
+<form th:method="POST" th:action="@{/adduser}" th:object="${user}" accept-charset="UTF-8">
+    <label>Введите имя: </label>
+    <input type="text" th:field="*{firstName}" id="firstName"/>
+    <p style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+        Некорректное имя
+    </p>
+    <br/>
+
+    <label>Введите фамилию: </label>
+    <input type="text" th:field="*{lastName}" id="lastName"/>
+    <p style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+        Некорректная фамилия
+    </p>
+    <br/>
+
+    <label>Введите email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <p style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+        Некорректный email
+    </p>
+    <br/>
+
+    <input type="submit" value="Сохранить"/>
+</form>
+</body>
+</html>
